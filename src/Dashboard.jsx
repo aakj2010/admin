@@ -1,16 +1,18 @@
 import Card from "./Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear, faWrench } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
     const cards = [
         {
             title: "EARNINGS (MONTHLY)",
             price: "$40000",
-            theme: "primary"
+            theme: "primary",
         },
         {
             title: "EARNINGS (ANNUAL)",
             price: "$215,000",
-            theme: "success"
+            theme: "success",
         },
         {
             title: "TASKS",

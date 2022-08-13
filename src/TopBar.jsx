@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faEnvelope, faBell} from '@fortawesome/free-solid-svg-icons'
 function TopBar(){
     return(
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -52,7 +54,7 @@ function TopBar(){
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                                <FontAwesomeIcon icon={faBell} />
                                 {/* <!-- Counter - Alerts --> */}
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
@@ -103,7 +105,7 @@ function TopBar(){
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
+                                <FontAwesomeIcon icon={faEnvelope} />
                                 {/* <!-- Counter - Messages --> */}
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
@@ -172,8 +174,9 @@ function TopBar(){
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg" />
+                                <span><FontAwesomeIcon icon={faUser} /></span>
+                                {/* <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg" /> */}
                             </a>
                             {/* <!-- Dropdown - User Information --> */}
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

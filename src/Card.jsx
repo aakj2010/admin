@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDollarSign} from '@fortawesome/free-solid-svg-icons'
 
 function Card({card}){
     return(
@@ -12,7 +14,7 @@ function Card({card}){
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{card.price}</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    <FontAwesomeIcon icon={faDollarSign} />
                     </div>
                 </div>
             </div>
