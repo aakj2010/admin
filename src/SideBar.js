@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SideBar(){
     return(
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -15,9 +17,21 @@ function SideBar(){
 
         {/* <!-- Nav Item - Dashboard --> */}
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <Link class="nav-link" to="/dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span>Dashboard</span></Link>
+        </li>
+
+        <li class="nav-item active">
+            <Link class="nav-link" to="/users">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Users</span></Link>
+        </li>
+
+        <li class="nav-item active">
+            <Link class="nav-link" to="/products">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Products</span></Link>
         </li>
 
         {/* <!-- Divider --> */}

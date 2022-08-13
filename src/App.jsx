@@ -1,21 +1,31 @@
 import './css/sb-admin-2.css';
-import Card from './Card';
 import Dashboard from './Dashboard';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
+import Users from './Users';
+import Products from './Products';
+import CreateUser from './CreateUser';
+import { BrowserRouter, Routes, Route,} from "react-router-dom";
 
 function App() {
   return (
+   <BrowserRouter>
     <div id="wrapper">
       <SideBar></SideBar>
       <div id="content-wrapper" class="d-flex flex-column">
         <div id='content'>
         <TopBar></TopBar>
-        <Dashboard></Dashboard>
+        <Routes>
+          <Route path='/dashboard' element={<Dashboard/>} />
+          <Route path='/users' element={<Users/>} />
+          <Route path='/create-user' element={<CreateUser/>} />
+          <Route path='/products' element={<Products/>} />
+        </Routes>
        
         </div>
       </div>
     </div>
+   </BrowserRouter>
   );
 }
 
