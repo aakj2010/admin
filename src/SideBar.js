@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faWrench, faGaugeHigh} from '@fortawesome/free-solid-svg-icons'
+import { faGear, faWrench, faGaugeHigh, faUsers, faP, faChartArea, faTable, faPager} from '@fortawesome/free-solid-svg-icons'
 function SideBar() {
     return (
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -25,14 +25,14 @@ function SideBar() {
 
             <li class="nav-item active">
                 <Link class="nav-link" to="/users">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Users</span></Link>
+                    <FontAwesomeIcon icon={faUsers} />
+                    <span> Users</span></Link>
             </li>
 
             <li class="nav-item active">
                 <Link class="nav-link" to="/products">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Products</span></Link>
+                    <FontAwesomeIcon icon={faP} />
+                    <span> Products</span></Link>
             </li>
 
             {/* <!-- Divider --> */}
@@ -91,7 +91,8 @@ function SideBar() {
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <FontAwesomeIcon icon={faPager} />
+                    <span> Pages</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -111,14 +112,16 @@ function SideBar() {
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <FontAwesomeIcon icon={faChartArea} />
+                    <span> Charts</span></a>
             </li>
 
             {/* <!-- Nav Item - Tables --> */}
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <FontAwesomeIcon icon={faTable} />
+                    <span> Tables</span></a>
             </li>
 
             {/* <!-- Divider --> */}
