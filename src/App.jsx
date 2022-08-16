@@ -6,7 +6,7 @@ import Users from './Users';
 import Products from './Products';
 import CreateUser from './CreateUser';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
-import Createproduct from './CreateProduct';
+import CreateProduct from './CreateProduct';
 import LogIn from './LogIn';
 import Portal from './Portal';
 
@@ -21,7 +21,7 @@ function App() {
                 <Route path='users' element={<Users />} />
                 {/* <Route path='/' element={<LogIn />} /> */}
                 <Route path='products' element={<Products />} />
-                <Route path='/create-product' element={<Createproduct />} />
+                <Route path='create-product' element={<CreateProduct />} />
               </Route>
             </Routes>
        
