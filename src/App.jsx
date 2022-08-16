@@ -19,9 +19,9 @@ function App() {
               <Route path='/portal' element={<Portal />}>
                 <Route path='dashboard' element={<Dashboard />} />
                 <Route path='users' element={<Users />} />
-                <Route path='create-user' element={<CreateUser />} />
+                {/* <Route path='/' element={<LogIn />} /> */}
                 <Route path='products' element={<Products />} />
-                <Route path='create-product' element={<Createproduct />} />
+                <Route path='/create-product' element={<Createproduct />} />
               </Route>
             </Routes>
        
