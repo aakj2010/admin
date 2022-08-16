@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function LogIn() {
     return (
@@ -38,9 +39,9 @@ function LogIn() {
                                                                 Me</label>
                                                     </div>
                                                 </div>
-                                                <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                                <Link to="/portal" class="btn btn-primary btn-user btn-block">
                                                     Login
-                                                </a>
+                                                </Link>
                                                 <hr />
                                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                                     <i class="fab fa-google fa-fw"></i> Login with Google

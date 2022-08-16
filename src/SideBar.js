@@ -18,19 +18,19 @@ function SideBar() {
 
             {/* <!-- Nav Item - Dashboard --> */}
             <li class="nav-item active">
-                <Link class="nav-link" to="/dashboard">
+                <Link class="nav-link" to="/portal/dashboard">
                     <FontAwesomeIcon icon={faGaugeHigh} />
                     <span> Dashboard</span></Link>
             </li>
 
             <li class="nav-item active">
-                <Link class="nav-link" to="/users">
+                <Link class="nav-link" to="/portal/users">
                     <FontAwesomeIcon icon={faUsers} />
                     <span> Users</span></Link>
             </li>
 
             <li class="nav-item active">
-                <Link class="nav-link" to="/products">
+                <Link class="nav-link" to="/portal/products">
                     <FontAwesomeIcon icon={faP} />
                     <span> Products</span></Link>
             </li>
