@@ -1,5 +1,35 @@
 import { Link } from "react-router-dom";
 function Products() {
+    const products = [
+        {
+            Id: "1",
+            name: "OnePlus 9R",
+            brand: "OnePlus",
+            quantity: "20",
+            price: "35000"
+        },
+        {
+            Id: "2",
+            name: "Mi 6Pro",
+            brand: "Xiomi",
+            quantity: "10",
+            price: "13500"
+        },
+        {
+            Id: "3",
+            name: "Lenovo K6Power",
+            brand: "Lenovo",
+            quantity: "25",
+            price: "10000"
+        },
+        {
+            Id: "4",
+            name: "OnePlus 10R",
+            brand: "OnePlus",
+            quantity: "35",
+            price: "40000"
+        }
+    ]
     return (
         <div class="container-fluid">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -17,64 +47,42 @@ function Products() {
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>S.No</th>
                                     <th>Product Name</th>
+                                    <th>Product Brand</th>
                                     <th>Quantity</th>
-                                    <th>Uploading date</th>
                                     <th>Price</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>S.No</th>
                                     <th>Product Name</th>
+                                    <th>Product Brand</th>
                                     <th>Quantity</th>
-                                    <th>Uploading date</th>
                                     <th>Price</th>
+                                    <th>Actions</th>
+
                                 </tr>
                             </tfoot>
                             <tbody>
-                                
-                                <tr>
-                                    <td>Colleen Hurst</td>
-                                    <td>39</td>
-                                    <td>2009/09/15</td>
-                                    <td>$205,500</td>
-                                </tr>
-                                <tr>
-                                    <td>Sonya Frost</td>
-                                    <td>23</td>
-                                    <td>2008/12/13</td>
-                                    <td>$103,600</td>
-                                </tr>
-                                <tr>
-                                    <td>Jena Gaines</td>
-                                    <td>30</td>
-                                    <td>2008/12/19</td>
-                                    <td>$90,560</td>
-                                </tr>
-                                <tr>
-                                    <td>Quinn Flynn</td>
-                                    <td>22</td>
-                                    <td>2013/03/03</td>
-                                    <td>$342,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Charde Marshall</td>
-                                    <td>36</td>
-                                    <td>2008/10/16</td>
-                                    <td>$470,600</td>
-                                </tr>
-                                <tr>
-                                    <td>Haley Kennedy</td>
-                                    <td>43</td>
-                                    <td>2012/12/18</td>
-                                    <td>$313,500</td>
-                                </tr>
-                                <tr>
-                                    <td>Tatyana Fitzpatrick</td>
-                                    <td>19</td>
-                                    <td>2010/03/17</td>
-                                    <td>$385,750</td>
-                                </tr>
+                                {
+                                    products.map((product, index) => {
+                                        return <tr>
+                                            <td>{index + 1}</td>
+                                            <td>{product.name}</td>
+                                            <td>{product.brand}</td>
+                                            <td>{product.quantity}</td>
+                                            <td>{product.price}</td>
+                                            <td>
+                                                <Link to={`/portal/products/${product.Id}`} className="btn btn-sm btn-primary mr-2">View</Link>
+                                                <Link to={`/portal/products/${product.Id}`} className="btn btn-sm btn-warning mr-2">Edit</Link>
+                                                <Link to={`/portal/products/${product.Id}`} className="btn btn-sm btn-danger mr-2">Delete</Link>
+                                            </td>
+                                        </tr>
+                                    })
+                                }
                             </tbody>
                         </table>
                     </div>
