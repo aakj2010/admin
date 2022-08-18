@@ -1,44 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Users() {
-    const users = [
-        {
-            id: 1,
-            name: "Haroon",
-            position: "CTO",
-            office: "BPO",
-            age: "33",
-            startDate: "23/04/2022",
-            salary: "45000"
-        },
-        {
-            id: 2,
-            name: "Mydeen",
-            position: "CTO",
-            office: "GnG",
-            age: "33",
-            startDate: "23/04/2022",
-            salary: "40000"
-        },
-        {   
-            id: 3,
-            name: "Midhun",
-            position: "Teacher",
-            office: "Vel",
-            age: "33",
-            startDate: "23/04/2022",
-            salary: "58000"
-        },
-        {   
-            id: 4,
-            name: "Navaraj",
-            position: "Teacher",
-            office: "Fairlands",
-            age: "33",
-            startDate: "23/04/2022",
-            salary: "58000"
-        }
-    ]
+
+    const [users, setUsers] = useState([]);
+    const [isLoading, setLoading] = useState(false)
+
+    useEffect(() => {
+        loadData()
+    }, [])
+
+    let loadData = async () => {
+        setLoading(true)
+        let users = await axios.get("https://62fe35d041165d66bfbb1342.mockapi.io/users");
+        console.log(users);
+        setUsers(users.data)
+        setLoading(false)
+    };
+
     return (
         <div class="container-fluid">
 
@@ -49,9 +29,12 @@ function Users() {
                     class="fas fa-download fa-sm text-white-50"></i>Create User</Link>
             </div>
 
-
-            {/* <!-- DataTales Example --> */}
-            <div class="card shadow mb-4">
+            {
+                isLoading ? (<div class="text-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>) :  (<div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Users</h6>
                 </div>
@@ -84,28 +67,30 @@ function Users() {
                             </tfoot>
                             <tbody>
                                 {
-                                    users.map((user, index)=>{
+                                    users.map((user, index) => {
                                         return <tr>
-                                        <td>{index + 1}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.position}</td>
-                                        <td>{user.office}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.startDate}</td>
-                                        <td>${user.salary}</td>
-                                        <td>
-                                            <Link to={`/portal/users/${user.id}`} className="btn btn-sm btn-primary mr-2"> View </Link>
-                                            <Link to={`/portal/users/${user.id}`} className="btn btn-sm btn-warning mr-2"> Edit </Link>
-                                            <Link to={`/portal/users/${user.id}`} className="btn btn-sm btn-danger mr-2"> Delete </Link>
-                                        </td>
-                                    </tr>
+                                            <td>{index + 1}</td>
+                                            <td>{user.name}</td>
+                                            <td>{user.position}</td>
+                                            <td>{user.office}</td>
+                                            <td>{user.age}</td>
+                                            <td>{user.startDate}</td>
+                                            <td>${user.salary}</td>
+                                            <td>
+                                                <Link to={`/portal/users/${user.id}`} className="btn btn-sm btn-primary mr-2"> View </Link>
+                                                <Link to={`/portal/users/edit/${user.id}`} className="btn btn-sm btn-warning mr-2"> Edit </Link>
+                                                <Link to={`/portal/users/${user.id}`} className="btn btn-sm btn-danger mr-2"> Delete </Link>
+                                            </td>
+                                        </tr>
                                     })
                                 }
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
+            </div>)
+            }
+           
         </div>
     );
 }

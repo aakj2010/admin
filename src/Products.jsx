@@ -77,7 +77,7 @@ function Products() {
                                             <td>{product.price}</td>
                                             <td>
                                                 <Link to={`/portal/products/${product.Id}`} className="btn btn-sm btn-primary mr-2">View</Link>
-                                                <Link to={`/portal/products/${product.Id}`} className="btn btn-sm btn-warning mr-2">Edit</Link>
+                                                <Link to={`/portal/products/edit/${product.Id}`} className="btn btn-sm btn-warning mr-2">Edit</Link>
                                                 <Link to={`/portal/products/${product.Id}`} className="btn btn-sm btn-danger mr-2">Delete</Link>
                                             </td>
                                         </tr>
