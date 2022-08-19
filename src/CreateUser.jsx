@@ -14,7 +14,7 @@ function CreateUser() {
         validate: (values) => {
             let errors = {};
 
-            if(values.username === ""){
+            if(values.name === ""){
                 errors.name = "Please Enter Name";
             }
 

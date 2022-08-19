@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFormik } from "formik";
+import axios from 'axios';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+
 
 function EditUser() {
 
+    const params = useParams()
+    const navigate = useNavigate()
+
     const formik = useFormik({
         initialValues: {
-            username: "",
+            name: "",
             position: "",
             office: "",
             age: "",
@@ -15,8 +21,8 @@ function EditUser() {
         validate: (values) => {
             let errors = {};
 
-            if (values.username === "") {
-                errors.username = "Please Enter Username";
+            if (values.name === "") {
+                errors.name = "Please Enter name";
             }
 
             if (values.position === "") {
@@ -25,10 +31,31 @@ function EditUser() {
 
             return errors;
         },
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            await axios.put(`https://62fe35d041165d66bfbb1342.mockapi.io/users/${params.id}`,values);
+            navigate("/portal/users")
         }
     });
+
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    let loadUser = async () => {
+        try {
+           let user = await axios.get(`https://62fe35d041165d66bfbb1342.mockapi.io/users/${params.id}`)
+           formik.setValues( {
+            name: user.data.name,
+            position: user.data.position,
+            office: user.data.office,
+            age: user.data.age,
+            startDate: user.data.startDate,
+            salary: user.data.salary
+        })
+        } catch (error) {
+            
+        }
+    }
 
     return (
         <div className="container">
@@ -36,13 +63,13 @@ function EditUser() {
             <form onSubmit={formik.handleSubmit}>
                 <div className="row">
                     <div className="col-lg-6">
-                        <label>UserName</label>
-                        <input className={`form-control ${formik.errors.username ? `input-error` : ``}`}
+                        <label>name</label>
+                        <input className={`form-control ${formik.errors.name ? `input-error` : ``}`}
                             type={"text"}
-                            value={formik.values.username}
+                            value={formik.values.name}
                             onChange={formik.handleChange}
-                            name="username" />
-                        <span style={{ color: 'red' }}>{formik.errors.username}</span>
+                            name="name" />
+                        <span style={{ color: 'red' }}>{formik.errors.name}</span>
                     </div>
                     <div className="col-lg-6">
                         <label>Position</label>
@@ -87,9 +114,9 @@ function EditUser() {
                     </div>
                     <div className="col-lg-6">
                         <input className="btn btn-primary mt-2"
-                        type={"submit"} 
-                        value="Submit"
-                        disabled={!formik.isValid} />
+                            type={"submit"}
+                            value="Submit"
+                            disabled={!formik.isValid} />
                     </div>
                 </div>
             </form>

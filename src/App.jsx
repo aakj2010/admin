@@ -28,8 +28,8 @@ function App() {
                 <Route path='users/edit/:id' element={<EditUser />} />
                 <Route path='create-user' element={<CreateUser />} />
                 <Route path='products' element={<Products />} />
-                <Route path='products/:Id' element={<ProductView />} />
-                <Route path='products/edit/:Id' element={<EditProduct />} />
+                <Route path='products/:id' element={<ProductView />} />
+                <Route path='products/edit/:id' element={<EditProduct />} />
                 <Route path='create-product' element={<CreateProduct />} />
               </Route>
             </Routes>

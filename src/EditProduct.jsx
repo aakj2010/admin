@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFormik } from "formik";
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom'
+
+
 function EditProduct() {
+
+    const params = useParams()
+    const navigate = useNavigate()
+
     const formik = useFormik({
         initialValues: {
-            productname: "",
-            brandname: "",
+            name: "",
             quantity: "",
             price: ""
         },
         validate: (values) => {
             let errors = {};
 
-            if (values.productname === "") {
-                errors.productname = "Please Enter Product Name";
-            }
-
-            if (values.brandname === "") {
-                errors.brandname = "Please Enter Brand Name ";
+            if (values.name === "") {
+                errors.name = "Please Enter Product Name";
             }
 
             if (values.quantity === "") {
@@ -29,28 +32,46 @@ function EditProduct() {
 
             return errors;
         },
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            await axios.put(`https://62ff561c9350a1e548dc4cb7.mockapi.io/products/${params.id}`,values);
+           navigate("/portal/products")
         }
     });
+
+    useEffect(() => {
+        loadProduct()
+    }, [])
+
+    let loadProduct = async () => {
+        try {
+            let product = await axios.get(`https://62ff561c9350a1e548dc4cb7.mockapi.io/products/${params.id}`);
+            formik.setValues({
+                name: product.data.name,
+                quantity: product.data.quantity,
+                price: product.data.price
+            })
+        } catch (error) {
+
+        }
+    }
 
     return (
         <div className="container">
             <h2 className="text-center">Edit Product</h2>
             <form onSubmit={formik.handleSubmit}>
-                <div className="row">
+                {/* <div className="row"> */}
 
                     <div className="col-lg-6">
                         <label>Product Name</label>
-                        <input className={`form-control ${formik.errors.productname ? `input-error` : ``}`}
+                        <input className={`form-control ${formik.errors.name ? `input-error` : ``}`}
                             type={"text"}
-                            value={formik.values.productname}
+                            value={formik.values.name}
                             onChange={formik.handleChange}
-                            name="productname" />
-                        <span style={{ color: 'red' }}>{formik.errors.productname}</span>
+                            name="name" />
+                        <span style={{ color: 'red' }}>{formik.errors.name}</span>
                     </div>
 
-                    <div className="col-lg-6">
+                    {/* <div className="col-lg-6">
                         <label>Brand Name</label>
                         <input className={`form-control ${formik.errors.brandname ? `input-error` : ``}`}
                             type={"text"}
@@ -58,7 +79,7 @@ function EditProduct() {
                             onChange={formik.handleChange}
                             name="brandname" />
                         <span style={{ color: 'red' }}>{formik.errors.brandname}</span>
-                    </div>
+                    </div> */}
 
                     <div className="col-lg-6">
                         <label>Quantity</label>
@@ -86,7 +107,7 @@ function EditProduct() {
                             value="Submit"
                             disabled={!formik.isValid} />
                     </div>
-                </div>
+                {/* </div> */}
             </form>
         </div>
     )
